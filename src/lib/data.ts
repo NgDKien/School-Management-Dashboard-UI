@@ -925,6 +925,12 @@ export const calendarEvents = [
     end: new Date(2024, 7, 12, 8, 45),
   },
   {
+    title: "Math2",
+    allDay: false,
+    start: new Date(2024, 12, 2, 8, 0),
+    end: new Date(2024, 12, 2, 8, 45),
+  },
+  {
     title: "English",
     allDay: false,
     start: new Date(2024, 7, 12, 9, 0),
