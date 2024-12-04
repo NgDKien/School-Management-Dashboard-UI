@@ -3,7 +3,7 @@ import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import { role, teachersData } from "@/lib/data";
-import { Teacher, Subject, Class } from "@prisma/client";
+import { Teacher, Subject, Class, Prisma } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import prisma from "@/lib/prisma";
@@ -102,8 +102,32 @@ const TeacherListPage = async ({
 
     const p = page ? parseInt(page) : 1;
 
+    const query: Prisma.TeacherWhereInput = {};
+
+    if (queryParams) {
+        for (const [key, value] of Object.entries(queryParams)) {
+            if (value !== undefined) {
+                switch (key) {
+                    case "classId":
+                        query.lessons = {
+                            some: {
+                                classId: parseInt(value),
+                            },
+                        };
+                        break;
+                    // case "search":
+                    //     query.name = { contains: value, mode: "insensitive" };
+                    //     break;
+                    // default:
+                    //     break;
+                }
+            }
+        }
+    }
+
     const [data, count] = await prisma.$transaction([
         prisma.teacher.findMany({
+            where: query,
             include: {
                 subjects: true,
                 classes: true,
@@ -111,7 +135,7 @@ const TeacherListPage = async ({
             take: ITEM_PER_PAGE,
             skip: ITEM_PER_PAGE * (p - 1),
         }),
-        prisma.teacher.count(),
+        prisma.teacher.count({ where: query }),
     ]);
 
     return (
