@@ -8,6 +8,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import FormContainer from "@/components/FormContainer";
+import BigCalendarContainer from "@/components/BigCalendarContainer";
 
 const SingleTeacherPage = async ({
     params: { id },
@@ -149,7 +150,7 @@ const SingleTeacherPage = async ({
                 {/* BOTTOM */}
                 <div className="mt-4 bg-white rounded-md p-4 h-[800px]">
                     <h1>Teacher&apos;s Schedule</h1>
-                    <BigCalendar />
+                    <BigCalendarContainer type="teacherId" id={teacher.id} />
                 </div>
             </div>
             {/* RIGHT */}
