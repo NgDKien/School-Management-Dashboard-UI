@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  // deleteClass,
+  deleteClass,
   // deleteExam,
   // deleteStudent,
   deleteSubject,
@@ -17,11 +17,10 @@ import { FormContainerProps } from "./FormContainer";
 
 const deleteActionMap = {
   subject: deleteSubject,
-  // class: deleteClass,
+  class: deleteClass,
   // teacher: deleteTeacher,
   // student: deleteStudent,
   // exam: deleteExam,
-  class: deleteSubject,
   teacher: deleteSubject,
   student: deleteSubject,
   exam: deleteSubject,
@@ -49,9 +48,9 @@ const StudentForm = dynamic(() => import("./forms/StudentForm"), {
 const SubjectForm = dynamic(() => import("./forms/SubjectForm"), {
   loading: () => <h1>Loading...</h1>,
 });
-// const ClassForm = dynamic(() => import("./forms/ClassForm"), {
-//   loading: () => <h1>Loading...</h1>,
-// });
+const ClassForm = dynamic(() => import("./forms/ClassForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
 // const ExamForm = dynamic(() => import("./forms/ExamForm"), {
 //   loading: () => <h1>Loading...</h1>,
 // });
@@ -73,14 +72,14 @@ const forms: {
       relatedData={relatedData}
     />
   ),
-  // class: (setOpen, type, data, relatedData) => (
-  //   <ClassForm
-  //     type={type}
-  //     data={data}
-  //     setOpen={setOpen}
-  //     relatedData={relatedData}
-  //   />
-  // ),
+  class: (setOpen, type, data, relatedData) => (
+    <ClassForm
+      type={type}
+      data={data}
+      setOpen={setOpen}
+      relatedData={relatedData}
+    />
+  ),
   teacher: (setOpen, type, data, relatedData) => (
     <TeacherForm
       type={type}
