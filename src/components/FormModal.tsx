@@ -5,7 +5,7 @@ import {
   // deleteExam,
   // deleteStudent,
   deleteSubject,
-  // deleteTeacher,
+  deleteTeacher,
 } from "@/lib/action";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -18,10 +18,9 @@ import { FormContainerProps } from "./FormContainer";
 const deleteActionMap = {
   subject: deleteSubject,
   class: deleteClass,
-  // teacher: deleteTeacher,
+  teacher: deleteTeacher,
   // student: deleteStudent,
   // exam: deleteExam,
-  teacher: deleteSubject,
   student: deleteSubject,
   exam: deleteSubject,
   // TODO: OTHER DELETE ACTIONS
