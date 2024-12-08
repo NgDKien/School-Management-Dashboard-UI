@@ -3,7 +3,7 @@
 import {
   deleteClass,
   // deleteExam,
-  // deleteStudent,
+  deleteStudent,
   deleteSubject,
   deleteTeacher,
 } from "@/lib/action";
@@ -19,9 +19,8 @@ const deleteActionMap = {
   subject: deleteSubject,
   class: deleteClass,
   teacher: deleteTeacher,
-  // student: deleteStudent,
+  student: deleteStudent,
   // exam: deleteExam,
-  student: deleteSubject,
   exam: deleteSubject,
   // TODO: OTHER DELETE ACTIONS
   parent: deleteSubject,
