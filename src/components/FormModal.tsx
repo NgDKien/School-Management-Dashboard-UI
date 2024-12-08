@@ -2,7 +2,7 @@
 
 import {
   deleteClass,
-  // deleteExam,
+  deleteExam,
   deleteStudent,
   deleteSubject,
   deleteTeacher,
@@ -20,8 +20,7 @@ const deleteActionMap = {
   class: deleteClass,
   teacher: deleteTeacher,
   student: deleteStudent,
-  // exam: deleteExam,
-  exam: deleteSubject,
+  exam: deleteExam,
   // TODO: OTHER DELETE ACTIONS
   parent: deleteSubject,
   lesson: deleteSubject,
@@ -49,9 +48,9 @@ const SubjectForm = dynamic(() => import("./forms/SubjectForm"), {
 const ClassForm = dynamic(() => import("./forms/ClassForm"), {
   loading: () => <h1>Loading...</h1>,
 });
-// const ExamForm = dynamic(() => import("./forms/ExamForm"), {
-//   loading: () => <h1>Loading...</h1>,
-// });
+const Examform = dynamic(() => import("./forms/Examform"), {
+  loading: () => <h1>Loading...</h1>,
+});
 // TODO: OTHER FORMS
 
 const forms: {
@@ -94,15 +93,15 @@ const forms: {
       relatedData={relatedData}
     />
   ),
-  // exam: (setOpen, type, data, relatedData) => (
-  //   <ExamForm
-  //     type={type}
-  //     data={data}
-  //     setOpen={setOpen}
-  //     relatedData={relatedData}
-  //   />
-  //   // TODO OTHER LIST ITEMS
-  // ),
+  exam: (setOpen, type, data, relatedData) => (
+    <Examform
+      type={type}
+      data={data}
+      setOpen={setOpen}
+      relatedData={relatedData}
+    />
+    // TODO OTHER LIST ITEMS
+  ),
 };
 
 const FormModal = ({
